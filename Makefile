@@ -1,14 +1,14 @@
-.PHONY: build clean run test install
+.PHONY: build build-win build-all clean install
 
 BINARY_NAME=batch_renamer
 
 build:
 	go build -ldflags="-s -w" -o bin/$(BINARY_NAME) .
 
-run: build./bin/$(BINARY_NAME)
+build-win:
+	GOOS=windows GOARCH=amd64 go build -ldflags"-s -w" -o bin/$(BINARY_NAME).exe .
 
-test:
-	go test -v ./...
+build-all: build build-win
 
 clean:
 	rm -f bin/*
