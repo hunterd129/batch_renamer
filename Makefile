@@ -1,6 +1,6 @@
 .PHONY: build build-win build-all clean install
 
-BINARY_NAME=batch_renamer
+BINARY_NAME=batren
 
 build:
 	go build -ldflags="-s -w" -o bin/$(BINARY_NAME) .
