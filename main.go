@@ -45,12 +45,12 @@ func main() {
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "batren - Batch Image Renaming Utility\n\n")
 		fmt.Fprintf(os.Stderr, "Usage:\n")
-		fmt.Fprintf(os.Stderr, " batren -t <path> -p <prefix> [options]\n\n")
+		fmt.Fprintf(os.Stderr, "  batren -t <path> -p <prefix> [options]\n\n")
 		fmt.Fprintf(os.Stderr, "Flags:\n")
-		fmt.Fprintf(os.Stderr, " -t, --target <path>		Path to target directory containing images\n")
-		fmt.Fprintf(os.Stderr, " -p, --prefix <string>	Prefix to apply to renamed files\n")
-		fmt.Fprintf(os.Stderr, " -y, --no-confirm		Skip confirmation prompt and execute immediately\n")
-		fmt.Fprintf(os.Stderr, " -h, --help				Display options & usage\n")
+		fmt.Fprintf(os.Stderr, "  -t, --target <path>     Path to target directory containing images\n")
+		fmt.Fprintf(os.Stderr, "  -p, --prefix <string>   Prefix to apply to renamed files\n")
+		fmt.Fprintf(os.Stderr, "  -y, --no-confirm        Skip confirmation prompt and execute immediately\n")
+		fmt.Fprintf(os.Stderr, "  -h, --help              Display this help message and exit\n")
 	}
 
 	var targetFolder, targetFolderShort string
