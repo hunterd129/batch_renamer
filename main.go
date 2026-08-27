@@ -14,6 +14,7 @@ var validExts = map[string]bool{
 	".jpg":  true,
 	".jpeg": true,
 	".png":  true,
+	".jxl":  true,
 	".webp": true,
 }
 
@@ -49,7 +50,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Flags:\n")
 		fmt.Fprintf(os.Stderr, "  -t, --target <path>     Path to target directory containing images\n")
 		fmt.Fprintf(os.Stderr, "  -p, --prefix <string>   Prefix to apply to renamed files\n")
-		fmt.Fprintf(os.Stderr, "  -y, --no-confirm        Skip confirmation prompt and execute immediately\n")
+		fmt.Fprintf(os.Stderr, "  -y, --noconfirm        Skip confirmation prompt and execute immediately\n")
 		fmt.Fprintf(os.Stderr, "  -h, --help              Display this help message and exit\n")
 	}
 
