@@ -3,7 +3,7 @@
 BINARY_NAME=batren
 
 build:
-	go build -ldflags="-s -w" -o bin/$(BINARY_NAME) .
+	go build -ldflags="-s -w" -o bin/$(BINARY_NAME) src/main.go
 
 build-win:
 	GOOS=windows GOARCH=amd64 go build -ldflags"-s -w" -o bin/$(BINARY_NAME).exe .

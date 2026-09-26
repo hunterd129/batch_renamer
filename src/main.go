@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 )
 
 var validExts = map[string]bool{
@@ -61,7 +62,7 @@ func main() {
 	flag.StringVar(&targetFolderShort, "t", "", "Path to the target directory (shorthand)")
 	flag.StringVar(&prefix, "prefix", "", "Prefix for renamed files")
 	flag.StringVar(&prefixShort, "p", "", "Prefix for renamed files (shorthand)")
-	noConfirm := flag.Bool("no-confirm", false, "Skip confirmation prompt and proceed automatically")
+	noConfirm := flag.Bool("noconfirm", false, "Skip confirmation prompt and proceed automatically")
 	flag.BoolVar(noConfirm, "y", false, "Skip confirmation prompt(short alias)")
 
 	for _, arg := range os.Args[1:] {
@@ -155,6 +156,12 @@ func main() {
 	}
 
 	var pairs []RenamePair
+	fmt.Print("Preparing files...")
+	for range 3 {
+		time.Sleep(1 * time.Second)
+		fmt.Print(".")
+	}
+	fmt.Println()
 
 	fmt.Printf("Normalizing %d files in: %s\n", totalFiles, resolvedPath)
 	fmt.Printf("Applying prefix: %s\n", prefix)
@@ -180,6 +187,10 @@ func main() {
 			fmt.Println("Aborted.")
 			os.Exit(0)
 		}
+
+		fmt.Print("Applying changes...")
+		time.Sleep(1500 * time.Millisecond)
+		fmt.Println()
 	}
 
 	fmt.Println("\nRenaming files...")
