@@ -26,6 +26,23 @@ type RenamePair struct {
 	dstPath string
 }
 
+func fauxProgress(label string, totalSteps int, totalDuration time.Duration) {
+	const barWidth = 30
+	stepDelay := totalDuration / time.Duration(totalSteps)
+
+	for i := 0; i <= totalSteps; i++ {
+		filled := (i * barWidth) / totalSteps
+		bar := strings.Repeat("█", filled) + strings.Repeat("░", barWidth-filled)
+		percent := (i * 100) / totalSteps
+
+		fmt.Printf("\r%s [%s] %3d%%", label, bar, percent)
+		if i < totalSteps {
+			time.Sleep(stepDelay)
+		}
+	}
+	fmt.Println()
+}
+
 func askConfirmation() bool {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("\nProceed with changes? [Y/n]: ")
@@ -156,12 +173,7 @@ func main() {
 	}
 
 	var pairs []RenamePair
-	fmt.Print("Preparing files...")
-	for range 3 {
-		time.Sleep(1 * time.Second)
-		fmt.Print(".")
-	}
-	fmt.Println()
+	fauxProgress("Preparing files", 30, 2*time.Second)
 
 	fmt.Printf("Normalizing %d files in: %s\n", totalFiles, resolvedPath)
 	fmt.Printf("Applying prefix: %s\n", prefix)
@@ -188,9 +200,7 @@ func main() {
 			os.Exit(0)
 		}
 
-		fmt.Print("Applying changes...")
-		time.Sleep(1500 * time.Millisecond)
-		fmt.Println()
+		fauxProgress("Applying changes", 20, 500*time.Millisecond)
 	}
 
 	fmt.Println("\nRenaming files...")
